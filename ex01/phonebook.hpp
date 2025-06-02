@@ -18,20 +18,14 @@
 //電話帳 →連絡先が追加される
 class PhoneBook {
 	public:
-		PhoneBook() : count(0), oldest(0) {}
+		PhoneBook();
+		void	executeAdd();
+		void	executeSearch();
+		void	executeExit();
 
-		Contact	inputContact(void);
-		void	addContact(const Contact& newContact);
-		void	displayContactList();
-		void	displayContact(size_t index);
 	private:
 		Contact	contacts[8];
 		size_t	count;
-		size_t	oldest;
 };
-
-// ------------------------------------------------
-// function
-// ------------------------------------------------
 
 #endif
