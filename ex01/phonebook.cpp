@@ -27,7 +27,7 @@ void	executeSearch(PhoneBook& p)
 void	executeExit()
 {
 	std::cout << "EXIT" <<std::endl;
-	std::exit;
+	std::exit(0);
 }
 
 //ADD, SEARCH, EXIT, それ以外の処理にそれぞれ飛ぶ
