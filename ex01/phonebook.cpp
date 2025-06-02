@@ -38,7 +38,7 @@ void	PhoneBook::executeAdd() {
 	count++;
 }
 
-// ------------------------------------------------------------------
+
 // PhoneBook::executeSearch ------------------------------------------
 
 void	displayContactList(Contact contacts[8], size_t count) {
@@ -74,9 +74,10 @@ void	displayContact(Contact contacts[8], size_t count, size_t index) {
 	//indexが、0以下、7以上、countよりも大きい場合は不正処理
 	if (index < 0 || index > 7 || index >= count)
 	{
-		std::cout << "Index is out of range or incorrect." << std::endl;;
+		std::cout << "Error: Index is out of range or incorrect." << std::endl;;
 		return ;
 	}
+
 	std::cout << "Index: "<< index << std::endl;
 	std::cout << "First name: "<< contacts[index].getInfo(Contact::F_name) << std::endl;
 	std::cout << "Last name: " << contacts[index].getInfo(Contact::L_name) << std::endl;
@@ -98,7 +99,7 @@ void	PhoneBook::executeSearch() {
 	displayContact(contacts, count, index);
 }
 
-// -------------------------------------------------------------------
+
 // PhoneBook::executeExit ---------------------------------------------
 
 void	PhoneBook::executeExit() {
