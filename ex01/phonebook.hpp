@@ -23,8 +23,8 @@ class PhoneBook {
 		void	executeExit();
 
 	private:
-		Contact	contacts[8];
-		size_t	count;
+		Contact	book_[8];
+		size_t	count_;
 };
 
 #endif

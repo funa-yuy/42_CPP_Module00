@@ -24,7 +24,7 @@ class Contact {
 		std::string	getInfo(ContactFild fild);
 
 	private:
-		std::string	info[5];
+		std::string	info_[5];
 };
 
 #endif
