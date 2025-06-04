@@ -8,8 +8,8 @@ int	main()
 	{
 		std::cout << "----- Enter the ADD, SEARCH, or EXIT command. -----" <<std::endl;
 		std::string	cmd;
-		while (cmd.empty()) {
-			std::getline(std::cin, cmd);
+		while (!std::getline(std::cin, cmd)) {
+			std::exit(EXIT_SUCCESS);
 		}
 		if (cmd == "ADD")
 			p.executeAdd();

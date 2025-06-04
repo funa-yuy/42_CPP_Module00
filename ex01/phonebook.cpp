@@ -16,7 +16,8 @@ std::string	getStrLine()
 	std::string	s;
 
 	while (isBlankLine(s)) {
-		std::getline(std::cin, s);
+		if (!std::getline(std::cin, s))
+			std::exit(EXIT_SUCCESS);
 	}
 	return (s);
 }
