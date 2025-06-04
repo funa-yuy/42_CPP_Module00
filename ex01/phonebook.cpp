@@ -91,9 +91,12 @@ int	inputIndex() {
 	index = getStrLine();
 	if (index.length() > 3)
 		return (-1);
-	if (std::all_of(index.cbegin(), index.cend(), isdigit))
-		return (std::stoi(index));
-	return (-1);
+	for (size_t i = 0; i < index.length(); i++)
+	{
+		if (!std::isdigit(static_cast<unsigned char>(index[i])))
+			return (-1);
+	}
+	return (std::atoi(index.c_str()));
 }
 
 void	displayContact(Contact book_[8], int count_, int index) {
