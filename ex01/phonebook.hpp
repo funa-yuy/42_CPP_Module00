@@ -24,7 +24,7 @@ class PhoneBook {
 
 	private:
 		Contact	book_[8];
-		size_t	count_;
+		int	count_;
 };
 
 #endif

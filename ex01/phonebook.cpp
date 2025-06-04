@@ -2,11 +2,20 @@
 
 PhoneBook::PhoneBook() : count_(0) {}
 
+bool isBlankLine(const std::string& s) {
+	for (size_t i = 0; i < s.size(); ++i) {
+		if (!std::isspace(static_cast<unsigned char>(s[i]))) {
+			return (false);
+		}
+	}
+	return (true);
+}
+
 std::string	getStrLine()
 {
 	std::string	s;
 
-	while (s.empty()) {
+	while (isBlankLine(s)) {
 		std::getline(std::cin, s);
 	}
 	return (s);
@@ -56,7 +65,7 @@ std::string	truncatesStrTo10(std::string str)
 	return (str);
 }
 
-void	displayContactList(Contact book_[8], size_t count_) {
+void	displayContactList(Contact book_[8], int count_) {
 	//見出し表示
 	std::cout << "|"
 			<< std::setw(10) << "Index" << "|"
@@ -66,7 +75,7 @@ void	displayContactList(Contact book_[8], size_t count_) {
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 
 	//保存されてる全ての連絡先を表示
-	for (size_t i = 0; i < 8 && i < count_; i++) {
+	for (int i = 0; i < 8 && i < count_; i++) {
 		std::cout << "|"
 			<< std::setw(10) << i << "|"
 			<< std::setw(10) << truncatesStrTo10(book_[i].getInfo(Contact::F_name)) << "|"
@@ -87,7 +96,7 @@ int	inputIndex() {
 	return (-1);
 }
 
-void	displayContact(Contact book_[8], size_t count_, size_t index) {
+void	displayContact(Contact book_[8], int count_, int index) {
 	//indexが、0以下、7以上、count_よりも大きい場合は不正処理
 	if (index < 0 || index > 7 || index >= count_)
 	{
