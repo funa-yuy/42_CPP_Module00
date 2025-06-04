@@ -2,7 +2,7 @@
 
 PhoneBook::PhoneBook() : count_(0) {}
 
-std::string	get_strline()
+std::string	getStrLine()
 {
 	std::string	s;
 
@@ -19,15 +19,15 @@ Contact	inputContact() {
 	std::string	tmp;
 
 	std::cout << "First name: ";
-	newContact.setInfo(Contact::F_name, get_strline());
+	newContact.setInfo(Contact::F_name, getStrLine());
 	std::cout << "Last name: ";
-	newContact.setInfo(Contact::L_name, get_strline());
+	newContact.setInfo(Contact::L_name, getStrLine());
 	std::cout << "Nickname: ";
-	newContact.setInfo(Contact::N_name, get_strline());
+	newContact.setInfo(Contact::N_name, getStrLine());
 	std::cout << "Phone number: ";
-	newContact.setInfo(Contact::Phone_number, get_strline());
+	newContact.setInfo(Contact::Phone_number, getStrLine());
 	std::cout << "Darkest secret: ";
-	newContact.setInfo(Contact::Darkest_secret, get_strline());
+	newContact.setInfo(Contact::Darkest_secret, getStrLine());
 
 	return (newContact);
 }
@@ -46,20 +46,32 @@ void	PhoneBook::executeAdd() {
 
 // PhoneBook::executeSearch ------------------------------------------
 
+std::string	truncatesStrTo10(std::string str)
+{
+	if (str.length() >= 10)
+	{
+		str = str.erase(9);
+		str.push_back('.');
+	}
+	return (str);
+}
+
 void	displayContactList(Contact book_[8], size_t count_) {
 	//見出し表示
-	std::cout << "|" << std::setw(10) << "Index" << "|"
+	std::cout << "|"
+			<< std::setw(10) << "Index" << "|"
 			<< std::setw(10) << "First Name" << "|"
 			<< std::setw(10) << "Last Name" << "|"
 			<< std::setw(10) << "Nickname" << "|" << std::endl;
-			std::cout << "|----------|----------|----------|----------|" << std::endl;
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
 
 	//保存されてる全ての連絡先を表示
 	for (size_t i = 0; i < 8 && i < count_; i++) {
-		std::cout << "|" << std::setw(10) << i << "|"
-				<< std::setw(10) << book_[i].getInfo(Contact::F_name) << "|"
-				<< std::setw(10) << book_[i].getInfo(Contact::L_name) << "|"
-				<< std::setw(10) << book_[i].getInfo(Contact::N_name) << "|" << std::endl;
+		std::cout << "|"
+			<< std::setw(10) << i << "|"
+			<< std::setw(10) << truncatesStrTo10(book_[i].getInfo(Contact::F_name)) << "|"
+			<< std::setw(10) << truncatesStrTo10(book_[i].getInfo(Contact::L_name)) << "|"
+			<< std::setw(10) << truncatesStrTo10(book_[i].getInfo(Contact::N_name)) << "|" << std::endl;
 	}
 }
 
@@ -67,7 +79,7 @@ int	inputIndex() {
 	std::string	index;
 
 	std::cout << "index: ";
-	index = get_strline();
+	index = getStrLine();
 	if (index.length() > 3)
 		return (-1);
 	if (std::all_of(index.cbegin(), index.cend(), isdigit))

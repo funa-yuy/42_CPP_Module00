@@ -6,7 +6,6 @@ int	main()
 
 	while (true)
 	{
-		//todo: 標準入力を何でやる？
 		std::cout << "----- Enter the ADD, SEARCH, or EXIT command. -----" <<std::endl;
 		std::string	cmd;
 		while (cmd.empty()) {
