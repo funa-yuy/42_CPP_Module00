@@ -2,6 +2,16 @@
 
 PhoneBook::PhoneBook() : count_(0) {}
 
+std::string	get_strline()
+{
+	std::string	s;
+
+	while (s.empty()) {
+		std::getline(std::cin, s);
+	}
+	return (s);
+}
+
 // PhoneBook::executeAdd ---------------------------------------------
 
 Contact	inputContact() {
@@ -9,20 +19,15 @@ Contact	inputContact() {
 	std::string	tmp;
 
 	std::cout << "First name: ";
-	std::cin >> tmp;
-	newContact.setInfo(Contact::F_name, tmp);
+	newContact.setInfo(Contact::F_name, get_strline());
 	std::cout << "Last name: ";
-	std::cin >> tmp;
-	newContact.setInfo(Contact::L_name, tmp);
+	newContact.setInfo(Contact::L_name, get_strline());
 	std::cout << "Nickname: ";
-	std::cin >> tmp;
-	newContact.setInfo(Contact::N_name, tmp);
+	newContact.setInfo(Contact::N_name, get_strline());
 	std::cout << "Phone number: ";
-	std::cin >> tmp;
-	newContact.setInfo(Contact::Phone_number, tmp);
+	newContact.setInfo(Contact::Phone_number, get_strline());
 	std::cout << "Darkest secret: ";
-	std::cin >> tmp;
-	newContact.setInfo(Contact::Darkest_secret, tmp);
+	newContact.setInfo(Contact::Darkest_secret, get_strline());
 
 	return (newContact);
 }
@@ -62,7 +67,7 @@ int	inputIndex() {
 	std::string	index;
 
 	std::cout << "index: ";
-	std::cin >> index;
+	index = get_strline();
 	if (index.length() > 3)
 		return (-1);
 	if (std::all_of(index.cbegin(), index.cend(), isdigit))
